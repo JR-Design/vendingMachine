@@ -14,11 +14,16 @@
     background: linear-gradient(to bottom, #333, #222);
     color: #00ff00;
     padding: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 5px;
     font-family: 'Courier New', monospace;
     border: 2px solid #444;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.notifications-compact {
+    margin-bottom: 10px;
+    color: rgb(196, 8, 8)
 }
 
 .message {
@@ -58,12 +63,6 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
-    transition: all 0.2s ease;
-}
-
-.product-slot:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .product-slot.out-of-stock {
@@ -332,7 +331,37 @@ button:disabled {
     padding: 20px;
     margin-top: 10px;
     animation: fadeIn 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
+
+.inventory-grid,
+.admin-controls,
+.stats-grid {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="number"] {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Update grid item widths */
+.inventory-products,
+.inventory-coins,
+.restock-products,
+.refill-coins {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Fix potential scrollbar jumps */
+html {
+    overflow-y: scroll;
+}
+
 
 @keyframes fadeIn {
     from {
@@ -539,6 +568,12 @@ button:disabled {
     }
 }
 
+.dispensed-product {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+}
+
 .dispensed-product,
 .dispensed-change {
     animation: dispense 0.5s ease forwards;
@@ -679,7 +714,7 @@ button:disabled {
 .product-button-content {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 2px;
 }
 
 .product-button {

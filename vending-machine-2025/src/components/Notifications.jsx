@@ -1,36 +1,55 @@
 import React from 'react';
 
 function Notifications({ inventory }) {
-  const notifications = [];
-  
-  // Check for low product inventory
-  Object.entries(inventory.products).forEach(([id, count]) => {
-    if (count === 0) {
-      notifications.push(`Out of stock: ${id.charAt(0) + id.slice(1).toLowerCase()}`);
-    } else if (count === 1) {
-      notifications.push(`Low stock: ${id.charAt(0) + id.slice(1).toLowerCase()}`);
+  const createNotificationSummary = () => {
+    const outOfStock = [];
+    const lowStock = [];
+    const lowCoins = [];
+    
+    // Check for product inventory issues
+    Object.entries(inventory.products).forEach(([id, count]) => {
+      const productName = id.charAt(0) + id.slice(1).toLowerCase();
+      if (count === 0) {
+        outOfStock.push(productName);
+      } else if (count === 1) {
+        lowStock.push(productName);
+      }
+    });
+    
+    // Check for low coin inventory
+    Object.entries(inventory.coins).forEach(([coinType, count]) => {
+      if (count <= 2) {
+        lowCoins.push(`${coinType.toLowerCase()}s`);
+      }
+    });
+    
+    // Build notification parts
+    const notificationParts = [];
+    
+    if (outOfStock.length > 0) {
+      notificationParts.push(`Out of stock: ${outOfStock.join(', ')}`);
     }
-  });
-  
-  // Check for low coin inventory
-  Object.entries(inventory.coins).forEach(([coinType, count]) => {
-    if (count <= 2) {
-      notifications.push(`Low on ${coinType.toLowerCase()}s: ${count} remaining`);
+    
+    if (lowStock.length > 0) {
+      notificationParts.push(`Low stock: ${lowStock.join(', ')}`);
     }
-  });
+    
+    if (lowCoins.length > 0) {
+      notificationParts.push(`Low on: ${lowCoins.join(', ')}`);
+    }
+    
+    return notificationParts.join(' | ');
+  };
   
-  if (notifications.length === 0) {
+  const notificationSummary = createNotificationSummary();
+  
+  if (!notificationSummary) {
     return null;
   }
   
   return (
-    <div className="notifications">
-      <h3>Notifications</h3>
-      <ul>
-        {notifications.map((notification, index) => (
-          <li key={index} className="notification-item">{notification}</li>
-        ))}
-      </ul>
+    <div className="notifications-compact">
+      <div className="notification-text">{notificationSummary}</div>
     </div>
   );
 }

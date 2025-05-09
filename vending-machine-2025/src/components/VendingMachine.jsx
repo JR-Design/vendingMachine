@@ -166,7 +166,7 @@ function VendingMachine() {
   };
 
   // reset after purchase for next transaction
-  const resetMachine = () => {
+  const adminResetMachine = () => {
     setInventory(initialInventory);
     setStats({
       productsSold: { COLA: 0, DIETCOLA: 0, LIMESODA: 0, WATER: 0 },
@@ -209,6 +209,15 @@ function VendingMachine() {
       }
     }));
     setMessage('Coins refilled successfully.');
+  };
+
+  const collectItems = () => {
+    setDispensedProduct(null);
+    setDispensedChange({ NICKEL: 0, DIME: 0, QUARTER: 0 });
+    
+    handleSound('buttonPress');
+    
+    setMessage('Items collected. Insert coins to continue.');
   };
 
   return (
@@ -285,35 +294,15 @@ function VendingMachine() {
       <DispensedItems
         product={dispensedProduct}
         change={dispensedChange}
-        onReset={resetMachine}
+        onCollect={collectItems}
       />
-      
-      <div className="machine-stats">
-        <h3>Machine Stats</h3>
-        <div className="stats-grid">
-          <div>
-            <h4>Products Sold</h4>
-            <ul>
-              {Object.entries(stats.productsSold).map(([id, count]) => (
-                <li key={id}>{PRODUCTS[id].name}: {count}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4>Other Stats</h4>
-            <ul>
-              <li>Total Revenue: {stats.totalRevenue}¢</li>
-              <li>Cancelled Transactions: {stats.cancelledTransactions}</li>
-            </ul>
-          </div>
-        </div>
-      </div>
       
       <AdminPanel 
         inventory={inventory}
+        stats={stats} 
         onRestock={handleRestock}
         onRefillCoins={handleRefillCoins}
-        resetMachine={resetMachine}
+        resetMachine={adminResetMachine}
       />
     </div>
   );

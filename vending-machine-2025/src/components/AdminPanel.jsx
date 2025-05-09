@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PRODUCTS } from '../utils/vendingMachineUtils';
 
-function AdminPanel({ inventory, onRestock, onRefillCoins, resetMachine }) {
+function AdminPanel({ inventory, stats, onRestock, onRefillCoins, resetMachine }) {
   const [showAdmin, setShowAdmin] = useState(false);
   const [productRestockAmount, setProductRestockAmount] = useState({
     COLA: 0,
@@ -60,6 +60,28 @@ function AdminPanel({ inventory, onRestock, onRefillCoins, resetMachine }) {
       {showAdmin && (
         <div className="admin-panel">
           <h2>Admin Panel</h2>
+          
+          {/* Add machine stats at the top of admin panel */}
+          <div className="admin-stats">
+            <h3>Machine Stats</h3>
+            <div className="stats-grid">
+              <div>
+                <h4>Products Sold</h4>
+                <ul>
+                  {Object.entries(stats.productsSold).map(([id, count]) => (
+                    <li key={id}>{PRODUCTS[id].name}: {count}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4>Other Stats</h4>
+                <ul>
+                  <li>Total Revenue: {stats.totalRevenue}¢</li>
+                  <li>Cancelled Transactions: {stats.cancelledTransactions}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
           
           <div className="admin-inventory">
             <h3>Current Inventory</h3>
