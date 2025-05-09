@@ -6,16 +6,16 @@ export const handleSound = (soundName) => {
 
   const soundCollections = {
     coinInsert: [
-      '../../public/sounds/coin-insert/coin1.wav',
-      '../../public/sounds/coin-insert/coin2.wav',
-      '../../public/sounds/coin-insert/coin3.wav',
-      '../../public/sounds/coin-insert/coin4.wav',
-      '../../public/sounds/coin-insert/coin5.wav'
+      '/sounds/coin-insert/coin1.wav',
+      '/sounds/coin-insert/coin2.wav',
+      '/sounds/coin-insert/coin3.wav',
+      '/sounds/coin-insert/coin4.wav',
+      '/sounds/coin-insert/coin5.wav'
     ],
-    productDispense: ['../../public/sounds/product-dispense.wav'],
-    buttonPress: ['../../public/sounds/button-press.wav'],
-    changeReturn: ['../../public/sounds/change-return.mp3'],
-    error: ['../../public/sounds/error.wav']
+    productDispense: ['/sounds/product-dispense.wav'],
+    buttonPress: ['/sounds/button-press.wav'],
+    changeReturn: ['/sounds/change-return.mp3'],
+    error: ['/sounds/error.wav']
   };
 
   // checks if sound collection exists
