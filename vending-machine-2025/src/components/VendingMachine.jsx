@@ -7,6 +7,7 @@ import ProductButton from './ProductButton';
 import DispensedItems from './DispensedItems';
 import AdminPanel from './AdminPanel';
 import Notifications from './Notifications';
+import ProductImage from './ProductImage';
 import { 
   COIN_VALUES, 
   PRODUCTS, 
@@ -228,22 +229,23 @@ function VendingMachine() {
       
       <div className="vending-machine-body">
         <div className="product-display">
-          {Object.entries(PRODUCTS).map(([id, product]) => (
-            <div key={id} className={`product-slot ${inventory.products[id] <= 0 ? 'out-of-stock' : ''}`}>
-              <div className="product-image">
-                <div className="product-icon">{product.name.charAt(0)}</div>
-              </div>
-              <div className="product-info">
-                <div className="product-name">{product.name}</div>
-                <div className="product-price">{product.price}¢</div>
-                <div className="product-stock">
-                  {inventory.products[id] <= 0 
-                    ? 'OUT OF STOCK' 
-                    : `${inventory.products[id]} available`}
+            {Object.entries(PRODUCTS).map(([id, product]) => (
+                <div key={id} className={`product-slot ${inventory.products[id] <= 0 ? 'out-of-stock' : ''}`}>
+                <ProductImage 
+                    productName={product.name} 
+                    isOutOfStock={inventory.products[id] <= 0} 
+                />
+                <div className="product-info">
+                    <div className="product-name">{product.name}</div>
+                    <div className="product-price">{product.price}¢</div>
+                    <div className="product-stock">
+                    {inventory.products[id] <= 0 
+                        ? 'OUT OF STOCK' 
+                        : `${inventory.products[id]} available`}
+                    </div>
                 </div>
-              </div>
-            </div>
-          ))}
+                </div>
+            ))}
         </div>
         
         <div className="controls">

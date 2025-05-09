@@ -1,5 +1,6 @@
 import React from 'react';
 import { formatChangeDisplay } from '../utils/vendingMachineUtils';
+import CoinImage from './CoinImage';
 
 function DispensedItems({ product, change, onReset }) {
   const hasDispensedItems = product || Object.values(change).some(val => val > 0);
@@ -22,10 +23,15 @@ function DispensedItems({ product, change, onReset }) {
       
       {Object.values(change).some(val => val > 0) && (
         <div className="dispensed-change">
-          <h3>Dispensed Change:</h3>
-          <p>{formatChangeDisplay(change)}</p>
+            <h3>Dispensed Change:</h3>
+            <div className="coins-container">
+            {change.QUARTER > 0 && <CoinImage coinType="QUARTER" count={change.QUARTER} />}
+            {change.DIME > 0 && <CoinImage coinType="DIME" count={change.DIME} />}
+            {change.NICKEL > 0 && <CoinImage coinType="NICKEL" count={change.NICKEL} />}
+            </div>
+            <p>{formatChangeDisplay(change)}</p>
         </div>
-      )}
+        )}
       
       <button className="collect-button" onClick={onReset}>
         Collect Items
