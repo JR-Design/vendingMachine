@@ -1,0 +1,662 @@
+.vending-machine {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    color: #333;
+}
+
+/* Display */
+.display {
+    background: linear-gradient(to bottom, #333, #222);
+    color: #00ff00;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    border: 2px solid #444;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.message {
+    font-size: 16px;
+    margin-bottom: 10px;
+    min-height: 20px;
+}
+
+.balance {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Vending Machine Body */
+.vending-machine-body {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Product Display */
+.product-display {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    background-color: #e9ecef;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-slot {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.product-slot:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.product-slot.out-of-stock {
+    opacity: 0.7;
+    background-color: #f8f9fa;
+}
+
+.product-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.product-icon {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+}
+
+.product-info {
+    flex: 1;
+}
+
+.product-name {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.product-price {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.product-stock {
+    font-size: 12px;
+    color: #888;
+}
+
+.product-slot.out-of-stock .product-stock {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.coin-buttons,
+.product-buttons {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333;
+}
+
+.coin-button-group,
+.product-button-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #0069d9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.coin-button {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.coin-button:hover {
+    background-color: #e0a800;
+}
+
+.product-button {
+    background-color: #28a745;
+}
+
+.product-button:hover {
+    background-color: #218838;
+}
+
+.product-button.out-of-stock {
+    background-color: #dc3545;
+    opacity: 0.7;
+}
+
+.cancel-button {
+    background-color: #dc3545;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.cancel-button:hover {
+    background-color: #c82333;
+}
+
+/* Dispensed Items */
+.dispensed {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 20px;
+    align-items: center;
+    animation: highlight 1s ease;
+}
+
+@keyframes highlight {
+    0% {
+        background-color: #fffacd;
+    }
+
+    100% {
+        background-color: #fff;
+    }
+}
+
+.dispensed h3 {
+    margin-top: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.collect-button {
+    background-color: #17a2b8;
+    height: 40px;
+}
+
+.collect-button:hover {
+    background-color: #138496;
+}
+
+/* Notifications */
+.notifications {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.notifications h3 {
+    margin-top: 0;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.notifications ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.notification-item {
+    margin-bottom: 5px;
+}
+
+/* Machine Stats */
+.machine-stats {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.machine-stats h3 {
+    margin-top: 0;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.stats-grid h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.stats-grid ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.stats-grid li {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* Continue in: src/components/VendingMachine.css */
+
+/* Admin Panel */
+.admin-section {
+    margin-top: 20px;
+}
+
+.admin-toggle {
+    width: 100%;
+    background-color: #6c757d;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.admin-toggle:hover {
+    background-color: #5a6268;
+}
+
+.admin-panel {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 10px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.admin-panel h2 {
+    margin-top: 0;
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 10px;
+}
+
+.admin-inventory {
+    margin-bottom: 30px;
+}
+
+.admin-inventory h3 {
+    margin-top: 0;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.inventory-products,
+.inventory-coins {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.inventory-products h4,
+.inventory-coins h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.inventory-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.inventory-item:last-child {
+    border-bottom: none;
+}
+
+.inventory-item .low-stock {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.admin-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.restock-products,
+.refill-coins {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.restock-products h3,
+.refill-coins h3 {
+    margin-top: 0;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.restock-grid {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.restock-item {
+    display: grid;
+    grid-template-columns: 1fr 80px;
+    align-items: center;
+    gap: 10px;
+}
+
+.restock-item label {
+    font-size: 14px;
+}
+
+.restock-item input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.restock-button,
+.refill-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.restock-button:hover,
+.refill-button:hover {
+    background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .vending-machine-body {
+        grid-template-columns: 1fr;
+    }
+
+    .dispensed {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .stats-grid,
+    .inventory-grid,
+    .admin-controls {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .product-display {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animations and Effects */
+.product-button,
+.coin-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-button::after,
+.coin-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.product-button:hover::after,
+.coin-button:hover::after {
+    transform: translateX(0);
+}
+
+/* Transition effects */
+.product-slot,
+.coin-button,
+.product-button,
+.cancel-button,
+.collect-button {
+    transition: all 0.2s ease;
+}
+
+/* When product is dispensed */
+@keyframes dispense {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.dispensed-product,
+.dispensed-change {
+    animation: dispense 0.5s ease forwards;
+}
+
+.product-image {
+    width: 60px;
+    height: 90px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.product-icon {
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.out-of-stock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.out-of-stock-overlay span {
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    transform: rotate(-30deg);
+    padding: 3px 8px;
+    background-color: #dc3545;
+    border-radius: 3px;
+}
+
+/* Coin Image Styles */
+.coin-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.coin {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: #333;
+    font-size: 10px;
+    font-weight: bold;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.coin-value {
+    font-size: 9px;
+    font-weight: bold;
+}
+
+/* Dispensed Items Animation */
+.dispensed-tray {
+    background-color: #e9ecef;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dispensed-item {
+    animation: drop 0.5s ease forwards;
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    70% {
+        transform: translateY(5px);
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Sound controls */
+.sound-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 100;
+}
+
+.sound-toggle:hover {
+    color: #495057;
+}
