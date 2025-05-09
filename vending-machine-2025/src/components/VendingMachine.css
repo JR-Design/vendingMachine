@@ -1,3 +1,7 @@
+html {
+    overflow-y: scroll;
+}
+
 .vending-machine {
     max-width: 900px;
     margin: 0 auto;
@@ -348,18 +352,12 @@ input[type="number"] {
     width: 100%;
 }
 
-/* Update grid item widths */
 .inventory-products,
 .inventory-coins,
 .restock-products,
 .refill-coins {
     width: 100%;
     box-sizing: border-box;
-}
-
-/* Fix potential scrollbar jumps */
-html {
-    overflow-y: scroll;
 }
 
 
