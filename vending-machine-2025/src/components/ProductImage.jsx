@@ -22,8 +22,8 @@ function ProductImage({ productName, isOutOfStock, small = false }) {
         style={{ 
           backgroundColor: isOutOfStock ? '#ccc' : bgColor,
           opacity: isOutOfStock ? 0.7 : 1,
-          width: small ? '20px' : '60px',
-          height: small ? '45px' : '90px'
+          width: small ? '20px' : '45px',
+          height: small ? '45px' : '70px'
         }}
       >
         <div 

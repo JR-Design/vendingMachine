@@ -229,8 +229,6 @@ function VendingMachine() {
         >
             {soundEnabled ? "🔊" : "🔇"}
         </button>
-
-      <h1>Vending Machine</h1>
       
       <Display message={message} balance={balance} />
       

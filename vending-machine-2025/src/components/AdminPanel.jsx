@@ -158,7 +158,7 @@ function AdminPanel({ inventory, stats, onRestock, onRefillCoins, resetMachine }
             <h3>Reset Machine</h3>
             <p>This will reset the machine to its initial state, clearing all statistics and reverting to default inventory.</p>
             <button 
-              className="reset-button" 
+              className="cancel-button" 
               onClick={() => {
                 if (confirm('Are you sure you want to reset the machine? This action cannot be undone.')) {
                   resetMachine();
