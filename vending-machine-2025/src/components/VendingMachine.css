@@ -321,7 +321,8 @@ button:disabled {
     width: 100%;
     background-color: #6c757d;
     padding: 12px;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .admin-toggle:hover {
@@ -498,13 +499,14 @@ input[type="number"] {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .vending-machine-body {
-        grid-template-columns: 1fr;
-    }
 
-    .dispensed {
+    product-display .dispensed {
         grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    .vending-machine-body {
+        grid-template-columns: 1fr;
     }
 
     .stats-grid,
@@ -516,6 +518,7 @@ input[type="number"] {
 
     .product-display {
         grid-template-columns: 1fr;
+        display: none;
     }
 }
 
