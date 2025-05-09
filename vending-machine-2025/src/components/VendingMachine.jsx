@@ -17,7 +17,6 @@ import {
 import { handleSound as handleSoundEffect } from '../utils/sounds';
 
 function VendingMachine() {
-  // State variables
   const [insertedCoins, setInsertedCoins] = useState({ NICKEL: 0, DIME: 0, QUARTER: 0 });
   const [balance, setBalance] = useState(0);
   const [message, setMessage] = useState('Insert coins and select a product');
