@@ -12,7 +12,11 @@ function DispensedItems({ product, change, onCollect }) {
   return (
     <div className="dispensed">
       {product && (
-        <div className="dispensed-product">
+        <div 
+            className="dispensed-product"
+            tabIndex={0}
+            aria-label={`Dispensed Product: ${product.name}`}
+        >
           <h3>Dispensed Product:</h3>
           <div className="product-image">
             <div className="product-icon">{product.name.charAt(0)}</div>
@@ -33,7 +37,11 @@ function DispensedItems({ product, change, onCollect }) {
         </div>
       )}
       
-      <button className="collect-button" onClick={onCollect}>
+      <button 
+        className="collect-button" 
+        tabIndex={0} 
+        onClick={onCollect}
+      >
         Collect Items
       </button>
     </div>

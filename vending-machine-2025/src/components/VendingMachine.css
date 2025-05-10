@@ -13,14 +13,32 @@ html {
     color: #333;
 }
 
+@font-face {
+    font-family: 'Technology';
+    src: url('/fonts/Technology.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Technology';
+    src: url('/fonts/Technology-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
 /* Display */
 .display {
     background: linear-gradient(to bottom, #333, #222);
     color: #00ff00;
-    padding: 15px;
+    padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
-    font-family: 'Courier New', monospace;
+    font-family: 'Technology', 'Courier New', monospace;
     border: 2px solid #444;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -31,13 +49,13 @@ html {
 }
 
 .message {
-    font-size: 16px;
+    font-size: 22px;
     margin-bottom: 10px;
     min-height: 20px;
 }
 
 .balance {
-    font-size: 22px;
+    font-size: 28px;
     font-weight: bold;
 }
 
@@ -738,4 +756,54 @@ input[type="number"] {
 
 .product-button.out-of-stock:hover {
     background-color: #e9ecef;
+}
+
+
+/* ==========================================================================
+   Focus Styles for Accessibility
+   ========================================================================== */
+.coin-button:focus,
+.product-button:focus,
+.cancel-button:focus,
+.collect-button:focus,
+.sound-toggle:focus {
+    outline: 3px solid #4d90fe;
+    outline-offset: 2px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensure focus is visible on buttons with hover effects */
+.coin-button:focus-visible,
+.product-button:focus-visible,
+.cancel-button:focus-visible,
+.collect-button:focus-visible,
+.sound-toggle:focus-visible {
+    outline: 3px solid #4d90fe;
+    outline-offset: 2px;
+}
+
+/* Different color for focused items in the dispensed section */
+.collect-button:focus {
+    outline-color: #17a2b8;
+}
+
+/* Make disabled buttons have a different focus style */
+button:disabled:focus {
+    outline-color: #adb5bd;
+}
+
+.balance:focus,
+.notifications-compact:focus,
+.dispensed-product:focus,
+.dispensed-change:focus {
+    outline: 2px dashed #6c757d;
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+/* Special styling for the balance when focused */
+.display .balance:focus {
+    outline-color: #00ff00;
+    background-color: rgba(0, 255, 0, 0.1);
 }

@@ -8,6 +8,7 @@ function ProductButton({ product, inventory, onSelect }) {
       <button 
         className={`product-button ${isOutOfStock ? 'out-of-stock' : ''}`}
         onClick={() => onSelect(product.id)}
+        tabIndex={isOutOfStock ? -1 : 0}
         disabled={isOutOfStock}
       >
         <div className="product-button-content">

@@ -224,6 +224,7 @@ function VendingMachine() {
     <div className="vending-machine">
         <button 
             className="sound-toggle" 
+            tabIndex={0} 
             onClick={() => setSoundEnabled(!soundEnabled)}
             title={soundEnabled ? "Mute Sounds" : "Enable Sounds"}
         >
@@ -283,7 +284,11 @@ function VendingMachine() {
             </div>
           </div>
           
-          <button className="cancel-button" onClick={cancelTransaction}>
+          <button 
+            className="cancel-button" 
+            tabIndex={0}
+            onClick={cancelTransaction}
+            >   
             Cancel
           </button>
         </div>

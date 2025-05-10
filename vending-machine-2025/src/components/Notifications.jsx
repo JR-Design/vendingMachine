@@ -49,7 +49,11 @@ function Notifications({ inventory }) {
   
   return (
     <div className="notifications-compact">
-      <div className="notification-text">{notificationSummary}</div>
+        <div 
+            className="notification-text" 
+            tabIndex={0} 
+            role="alert"
+        >{notificationSummary}</div>
     </div>
   );
 }

@@ -52,6 +52,7 @@ function AdminPanel({ inventory, stats, onRestock, onRefillCoins, resetMachine }
     <div className="admin-section">
       <button 
         className="admin-toggle" 
+        tabIndex={-1}
         onClick={() => setShowAdmin(!showAdmin)}
       >
         {showAdmin ? 'Hide Admin Panel' : 'Admin Panel'}

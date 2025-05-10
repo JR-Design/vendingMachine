@@ -9,6 +9,7 @@ function CoinButton({ coinType, onDeposit }) {
     return (
       <button 
         className="coin-button"
+        tabIndex={0}
         onClick={() => onDeposit(coinType)}
       >
         <div className="coin-button-content">
