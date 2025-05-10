@@ -24,6 +24,7 @@ function VendingMachine() {
   const [dispensedProduct, setDispensedProduct] = useState(null);
   const [dispensedChange, setDispensedChange] = useState({ NICKEL: 0, DIME: 0, QUARTER: 0 });
   const [soundEnabled, setSoundEnabled] = useState(true);
+  const [announcement, setAnnouncement] = useState('');
   const [inventory, setInventory] = useLocalStorage('vending-inventory', initialInventory);
   const [stats, setStats] = useLocalStorage('vending-stats', {
     productsSold: { COLA: 0, DIETCOLA: 0, LIMESODA: 0, WATER: 0 },
@@ -58,6 +59,7 @@ function VendingMachine() {
       }
     }));
     setMessage(`Inserted ${COIN_VALUES[coinType]}¢`);
+    setAnnouncement(`Inserted ${COIN_VALUES[coinType]} cents. Total balance is now ${balance + COIN_VALUES[coinType]} cents.`);
   };
 
   // handle product selection
@@ -127,6 +129,8 @@ function VendingMachine() {
     } else {
       setMessage(`Dispensed ${product.name}. Thank you!`);
     }
+    setAnnouncement(`Dispensed ${product.name} and ${changeAmount} cents in change.`);
+
   };
 
   // Handle cancel transaction
@@ -231,6 +235,15 @@ function VendingMachine() {
             {soundEnabled ? "🔊" : "🔇"}
         </button>
       
+        <div 
+            className="sr-only" 
+            aria-live="assertive" 
+            aria-atomic="true"
+            >
+            {announcement}
+        </div>
+
+
       <Display message={message} balance={balance} />
       
       <Notifications inventory={inventory} />

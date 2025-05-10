@@ -9,6 +9,7 @@ function CoinButton({ coinType, onDeposit }) {
     return (
       <button 
         className="coin-button"
+        aria-label={`Insert ${coinName}, ${value} cents`}
         tabIndex={0}
         onClick={() => onDeposit(coinType)}
       >

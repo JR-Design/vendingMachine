@@ -807,3 +807,26 @@ button:disabled:focus {
     outline-color: #00ff00;
     background-color: rgba(0, 255, 0, 0.1);
 }
+
+/* Screen reader only text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.shortcut-hint {
+    font-size: 10px;
+    color: #6c757d;
+    margin-left: 4px;
+    border: 1px solid #dee2e6;
+    padding: 1px 3px;
+    border-radius: 3px;
+    background-color: #f8f9fa;
+}
