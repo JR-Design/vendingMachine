@@ -571,8 +571,9 @@ input[type="number"] {
 
 .dispensed-product {
     display: flex;
-    align-items: baseline;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .dispensed-product,
