@@ -122,6 +122,10 @@ The application includes comprehensive error handling for various scenarios:
 
 GitHub Repository: [https://github.com/JR-Design/vendingMachine/tree/main/vending-machine-2025](https://github.com/JR-Design/vendingMachine/tree/main/vending-machine-2025)
 
+Google Drive as requested: [https://drive.google.com/drive/folders/1XPE2fm7zxQbBhXnSQZd2ch8Iq0SEy80X](https://drive.google.com/drive/folders/1XPE2fm7zxQbBhXnSQZd2ch8Iq0SEy80X)
+
+If possible, use Github.
+
 ## Author
 
 James Ross
@@ -132,4 +136,4 @@ This project is for demonstration purposes as part of a technical assessment.
 
 ## General info
 
-I only had 5 hours after work to put this together, enjoy!
+I only had 5 hours after work to put this together, I enjoyed exploring and the size of the scope. I hope you enjoy!
